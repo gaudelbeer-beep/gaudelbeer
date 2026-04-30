@@ -250,6 +250,15 @@
     margin-left: 6px;
     font-weight: 700;
   }
+.badge-recarga {
+    background: #DC2626;
+    color: var(--blanco);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    font-weight: 700;
+  }
 .equivalencia {
     text-align: center;
     font-size: 12px;
@@ -553,6 +562,10 @@
           <span id="barrilNombre">-</span>
           <span id="barrilPrecio">-</span>
         </div>
+        <div class="item-resultado" id="recargaRow" style="display:none">
+          <span id="recargaNombre">-</span>
+          <span id="recargaPrecio">-</span>
+        </div>
         <div class="item-resultado">
           <span>20 manijas de vidrio</span>
           <span>INCLUIDAS</span>
@@ -754,8 +767,8 @@
 // CALCULADORA
 const precios = {
   barriles: {
-    "30": { nombre: "Munich Original 30L", precio: 390000, litros: 30 },
-    "50": { nombre: "Munich Original 50L", precio: 590000, litros: 50 }
+    "30": { nombre: "Munich Original 30L", precio: 390000, litros: 30, recarga: 350000 },
+    "50": { nombre: "Munich Original 50L", precio: 590000, litros: 50, recarga: 550000 }
   },
   manijas: { 0: 0, 20: 50000, 30: 75000, 50: 120000 }
 };
@@ -790,15 +803,39 @@ document.getElementById('manijas').addEventListener('change', e => {
 function calcular() {
   let litrosBase = (estado.invitados * 0.5) * (estado.duracion / 2);
   if (estado.evento === 'fiesta' || estado.evento === 'casamiento') litrosBase *= 1.3;
+
   let barrilKey = litrosBase <= 30? "30" : "50";
   let barril = precios.barriles[barrilKey];
+
+  // Lógica de recarga para eventos largos
+  let recarga = null;
+  let precioRecarga = 0;
+  if (estado.duracion > 6) {
+    if (estado.invitados < 50) {
+      recarga = { nombre: "Recarga 30L", precio: precios.barriles["30"].recarga, litros: 30 };
+      precioRecarga = recarga.precio;
+    } else {
+      recarga = { nombre: "Recarga 50L", precio: precios.barriles["50"].recarga, litros: 50 };
+      precioRecarga = recarga.precio;
+    }
+  }
+
   let precioManijas = precios.manijas[estado.manijas];
   let totalManijas = 20 + estado.manijas;
-  let total = barril.precio + precioManijas;
+  let total = barril.precio + precioRecarga + precioManijas;
+  let litrosTotales = barril.litros + (recarga? recarga.litros : 0);
 
   document.getElementById('resultado').classList.add('activo');
   document.getElementById('barrilNombre').textContent = barril.nombre;
   document.getElementById('barrilPrecio').textContent = 'Gs. ' + barril.precio.toLocaleString('es-PY');
+
+  if (recarga) {
+    document.getElementById('recargaRow').style.display = 'flex';
+    document.getElementById('recargaNombre').innerHTML = recarga.nombre + '<span class="badge-recarga">EVENTO LARGO</span>';
+    document.getElementById('recargaPrecio').textContent = 'Gs. ' + recarga.precio.toLocaleString('es-PY');
+  } else {
+    document.getElementById('recargaRow').style.display = 'none';
+  }
 
   if (estado.manijas > 0) {
     document.getElementById('manijasExtraRow').style.display = 'flex';
@@ -811,10 +848,14 @@ function calcular() {
   }
 
   document.getElementById('totalPrecio').textContent = 'Gs. ' + total.toLocaleString('es-PY');
-  let vasos = barril.litros === 50? 100 : 60;
-  document.getElementById('equivalencia').textContent = `${barril.litros}L = ~${vasos} vasos de 500ml | Total ${totalManijas} manijas de vidrio`;
+  let vasos = Math.round(litrosTotales / 0.5);
+  document.getElementById('equivalencia').textContent = `${litrosTotales}L = ~${vasos} vasos de 500ml | Total ${totalManijas} manijas de vidrio`;
 
-  let mensaje = `Hola Gaudel! 🍺%0AUsé la calculadora para Lambaré:%0A%0ABarril: ${barril.nombre} - Gs. ${barril.precio.toLocaleString('es-PY')}%0AManijas: 20 incluidas`;
+  let mensaje = `Hola Gaudel! 🍺%0AUsé la calculadora para Lambaré:%0A%0ABarril: ${barril.nombre} - Gs. ${barril.precio.toLocaleString('es-PY')}`;
+  if (recarga) {
+    mensaje += `%0A${recarga.nombre} - Gs. ${recarga.precio.toLocaleString('es-PY')}`;
+  }
+  mensaje += `%0AManijas: 20 incluidas`;
   if (estado.manijas > 0) {
     let detalleManijas = ` Pack x${estado.manijas}`;
     mensaje += ` ${detalleManijas} - Gs. ${precioManijas.toLocaleString('es-PY')}`;
