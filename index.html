@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicio de Chopp - Gaudel Brewing Co. | Lambaré</title>
+<meta name="description" content="Alquiler de chopp Munich en Lambaré. Incluye 20 manijas de vidrio en préstamo + packs extra. Calculá tu evento. WhatsApp 0973 424 269">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ambar: #D97706;
+    --cobre: #B45309;
+    --negro: #111827;
+    --gris: #F3F4F6;
+    --blanco: #FFFFFF;
+    --verde: #059669;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    background: var(--blanco);
+    color: var(--negro);
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .hero {
+    background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)),
+                url('./imagenesweb/hero-amigos.jpg') center/cover;
+    color: var(--blanco);
+    padding: 60px 16px 40px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: 16px;
+    color: #D1D5DB;
+    margin-bottom: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .badge-promo {
+    display: inline-block;
+    background: var(--ambar);
+    color: var(--blanco);
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .btn-group-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: 15px;
+    width: 100%;
+  }
+  .btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    background: var(--ambar);
+    color: var(--blanco);
+  }
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  .btn-secondary {
+    background: var(--blanco);
+    color: var(--negro);
+    border: 2px solid var(--blanco);
+  }
+  .social-group-hero {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+  }
+  .btn-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blanco);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-social:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+  .btn-social svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .banner-manijas {
+    background: #FEF3C7;
+    padding: 24px 16px;
+    text-align: center;
+    border-bottom: 3px solid var(--ambar);
+  }
+  .banner-manijas h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--cobre);
+  }
+  .banner-manijas p {
+    font-size: 14px;
+    color: #92400E;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .letra-chica {
+    font-size: 11px;
+    color: #92400E;
+    margin-top: 8px;
+  }
+  .section {
+    padding: 48px 16px;
+  }
+  .section-alt {
+    background: var(--gris);
+  }
+  .section-title {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .section-subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #6B7280;
+    margin-top: -20px;
+    margin-bottom: 32px;
+  }
+  .gaudel-calc {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .campo {
+    margin-bottom: 20px;
+  }
+  .campo label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .range-val {
+    float: right;
+    font-weight: 700;
+    color: var(--ambar);
+  }
+  .slider-cont {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  input[type="range"] {
+    flex: 1;
+    height: 6px;
+    background: #E5E7EB;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--ambar);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    background: var(--blanco);
+    cursor: pointer;
+  }
+  .resultado {
+    background: var(--gris);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 24px;
+    display: none;
+  }
+  .resultado.activo {
+    display: block;
+  }
+  .resultado h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .res-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #E5E7EB;
+    font-size: 14px;
+  }
+  .total-row {
+    border-bottom: none;
+    border-top: 2px solid var(--negro);
+    margin-top: 8px;
+    padding-top: 16px;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .badge-ahorro {
+    background: var(--verde);
+    color: var(--blanco);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    font-weight: 700;
+  }
+  .badge-recarga {
+    background: #DC2626;
+    color: var(--blanco);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    font-weight: 700;
+  }
+  .equivalencia {
+    text-align: center;
+    font-size: 12px;
+    color: #6B7280;
+    margin: 12px 0;
+  }
+  .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: #25D366;
+    color: var(--blanco);
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 16px;
+    font-size: 16px;
+  }
+  .btn-whatsapp svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
+  .nota {
+    font-size: 11px;
+    color: #6B7280;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.4;
+  }
+  .tabla-precios {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    border-collapse: collapse;
+    background: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .tabla-precios th {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 14px;
+    font-size: 14px;
+    text-align: left;
+  }
+  .tabla-precios td {
+    padding: 14px;
+    border-bottom: 1px solid #E5E7EB;
+    font-size: 14px;
+  }
+  .tabla-precios tr:last-child td {
+    border-bottom: none;
+  }
+  .nota-tabla {
+    text-align: center;
+    font-size: 12px;
+    color: #6B7280;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .grid-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .feature {
+    background: var(--blanco);
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .feature-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .feature h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .feature p {
+    font-size: 14px;
+    color: #6B7280;
+  }
+  .pasos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .paso {
+    text-align: center;
+  }
+  .paso-num {
+    width: 48px;
+    height: 48px;
+    background: var(--ambar);
+    color: var(--blanco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 auto 12px;
+  }
+  .paso h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .paso p {
+    font-size: 14px;
+    color: #6B7280;
+  }
+  .testimonios-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .testimonio {
+    background: var(--blanco);
+    padding: 32px 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .testimonio-texto {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 16px;
+    color: #374151;
+  }
+  .testimonio-autor {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .galeria-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #E5E7EB;
+    cursor: pointer;
+  }
+  .galeria-item img, .galeria-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+  .galeria-item:hover img {
+    transform: scale(1.05);
+  }
+  .galeria-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: var(--blanco);
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .cta-final {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 60px 16px;
+    text-align: center;
+  }
+  .cta-final h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+  .cta-final p {
+    color: #D1D5DB;
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+  
+  /* CONTENEDOR FLOTANTE DE REDES */
+  .flotantes-cont {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+  }
+  .wa-flotante, .ig-flotante, .fb-flotante {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--blanco);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-flotante {
+    background: #25D366;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+  }
+  .ig-flotante {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220,39,67,0.4);
+  }
+  .fb-flotante {
+    background: #1877F2;
+    box-shadow: 0 4px 12px rgba(24,119,242,0.4);
+  }
+  .wa-flotante:hover, .ig-flotante:hover, .fb-flotante:hover {
+    transform: scale(1.08);
+  }
+  .wa-flotante svg, .ig-flotante svg, .fb-flotante svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+  }
+  footer {
+    background: #111827;
+    color: #9CA3AF;
+    padding: 32px 16px;
+    text-align: center;
+    font-size: 12px;
+  }
+  footer a {
+    color: var(--ambar);
+    text-decoration: none;
+  }
+  @media (min-width: 768px) {
+    .hero h1 { font-size: 48px; }
+    .hero p { font-size: 18px; }
+    .btn-group-hero { flex-direction: row; }
+    .btn { width: auto; }
+    .grid-features { grid-template-columns: repeat(4, 1fr); }
+    .pasos { grid-template-columns: repeat(4, 1fr); }
+    .galeria { grid-template-columns: repeat(3, 1fr); }
+    .section { padding: 80px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <h1>Servicio de Chopp de Gaudel Brewing Co. para tus Eventos</h1>
+    <p>Alquilá máquinas de chopp Munich con delivery gratis en Lambaré. Incluye 20 manijas de vidrio + pack de 50 extra por Gs. 120.000</p>
+    <span class="badge-promo">20 MANIJAS EN PRESTAMO | Pack x50 Gs. 120.000</span>
+    
+    <div class="btn-group-hero">
+      <a href="#calculadora" class="btn btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h10v2H7V7zm0 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+        Calcular mi chopp
+      </a>
+      <a href="https://wa.me/595973424269" class="btn btn-secondary" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.8c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.156 8.156 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.48-.4-.41-.56-.42h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.71 4.29 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.11-.23-.18-.48-.3z"/></svg>
+        WhatsApp 0973 424 269
+      </a>
+    </div>
+
+    <!-- REDES SOCIALES EN LA PARTE SUPERIOR -->
+    <div class="social-group-hero">
+      <a href="https://www.facebook.com/profile.php?id=61588991954080" class="btn-social" target="_blank" aria-label="Facebook Gaudel Brewing Co.">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.instagram.com/gaudelbrewing/?hl=es" class="btn-social" target="_blank" aria-label="Instagram Gaudel Brewing Co.">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="banner-manijas">
+  <div class="container">
+    <h3>Cada alquiler incluye 20 manijas de vidrio en préstamo</h3>
+    <p>¿Evento grande? Sumá hasta 50 extra por solo Gs. 120.000</p>
+    <p class="letra-chica">*Rotura/pérdida: Gs. 15.000 c/u.</p>
+  </div>
+</section>
+
+<section class="section" id="calculadora">
+  <div class="container">
+    <h2 class="section-title">Calculá tu chopp y tus manijas</h2>
+    <div class="gaudel-calc">
+      <div class="campo">
+        <label for="estilo">Estilo de Cerveza</label>
+        <select id="estilo" onchange="actualizarEstado()">
+          <option value="original">Munich Original</option>
+          <option value="ultra">Munich Ultra</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Invitados: <span id="valInvitados" class="range-val">30</span></label>
+        <div class="slider-cont">
+          <input type="range" id="invitados" min="5" max="150" step="5" value="30" oninput="actualizarEstado()">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label>Duración del evento: <span id="valDuracion" class="range-val">4 hs</span></label>
+        <div class="slider-cont">
+          <input type="range" id="duracion" min="2" max="10" step="2" value="4" oninput="actualizarEstado()">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="manijas">Manijas extra</label>
+        <select id="manijas" onchange="actualizarEstado()">
+          <option value="0">Sin manijas extra (20 incluidas)</option>
+          <option value="20">Pack x20 manijas extra (Gs. 50.000)</option>
+          <option value="30">Pack x30 manijas extra (Gs. 75.000)</option>
+          <option value="50">Pack x50 manijas extra (Gs. 120.000)</option>
+        </select>
+      </div>
+
+      <!-- SECCIÓN RESULTADOS -->
+      <div id="resultado" class="resultado">
+        <h3>Tu combo recomendado</h3>
+        <div class="res-row">
+          <span id="barrilNombre">-</span>
+          <span id="barrilPrecio">Gs. 0</span>
+        </div>
+
+        <div class="res-row" id="recargaRow" style="display:none;">
+          <span id="recargaNombre">-</span>
+          <span id="recargaPrecio">Gs. 0</span>
+        </div>
+
+        <div class="res-row">
+          <span>20 manijas de vidrio</span>
+          <span>INCLUIDAS</span>
+        </div>
+
+        <div class="res-row" id="manijasExtraRow" style="display:none;">
+          <span id="manijasExtraTexto">-</span>
+          <span id="manijasExtraPrecio">Gs. 0</span>
+        </div>
+
+        <div class="res-row total-row">
+          <span>Total Estimado:</span>
+          <span id="totalPrecio">Gs. 0</span>
+        </div>
+
+        <div id="equivalencia" class="equivalencia"></div>
+
+        <a id="btnWA" href="#" target="_blank" class="btn-whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.8c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.156 8.156 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.48-.4-.41-.56-.42h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.71 4.29 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.11-.23-.18-.48-.3z"/></svg>
+          Reservar por WhatsApp
+        </a>
+        <p class="nota">*Incluye máquina, instalación y delivery en Lambaré.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Barriles + Manijas</h2>
+    <table class="tabla-precios">
+      <thead>
+        <tr>
+          <th>Estilo</th>
+          <th>Tamaño</th>
+          <th>Alquiler*</th>
+          <th>Recarga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Munich Original</strong></td>
+          <td>30 Lts</td>
+          <td>Gs. 390.000</td>
+          <td>Gs. 350.000</td>
+        </tr>
+        <tr>
+          <td><strong>Munich Original</strong></td>
+          <td>50 Lts</td>
+          <td>Gs. 590.000</td>
+          <td>Gs. 550.000</td>
+        </tr>
+        <tr>
+          <td><strong>Munich Ultra</strong></td>
+          <td>30 Lts</td>
+          <td>Gs. 450.000</td>
+          <td>Gs. 420.000</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="nota-tabla">*Incluye: barril + máquina + instalación + gas + 20 manijas de vidrio. Delivery gratis Lambaré.<br>
+    <strong>Extras:</strong> Pack x20 = Gs. 50.000 | Pack x30 = Gs. 75.000 | Pack x50 = Gs. 120.000</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Qué incluye el servicio</h2>
+    <div class="grid-features">
+      <div class="feature">
+        <div class="feature-icon">🍺</div>
+        <h4>Equipo completo</h4>
+        <p>Máquina + barril + gas CO2 + instalación en Lambaré sin costo</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🍻</div>
+        <h4>Manijas de vidrio</h4>
+        <p>20 manijas incluidas + sumá adicionales para tu evento</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💳</div>
+        <h4>Pago</h4>
+        <p>El pago se realiza vía transferencia bancaria una vez confirmado el servicio</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h4>Garantía</h4>
+        <p>Si el lacre de la Recarga no se abre, el reembolso se realiza al retirar el equipo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Cómo funciona</h2>
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <h4>Calculás</h4>
+        <p>Litros + manijas en la web según tu evento</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <h4>Reservás</h4>
+        <p>Por WhatsApp 0973 424 269<br> 1 semana antes del evento</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <h4>Instalamos</h4>
+        <p>Llevamos todo: máquina + barril + manijas</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <h4>Retiramos</h4>
+        <p>Pasamos a buscar el equipo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Eventos Gaudel Brewing Co.</h2>
+    <p class="section-subtitle">Así quedan los eventos con el Servicio de Chopp y manijas de vidrio</p>
+    <div class="galeria">
+      <div class="galeria-item">
+        <img src="./imagenesweb/cumple-50l.jpg" alt="Evento con chopp Gaudel">
+        <div class="galeria-overlay">Cumpleaños</div>
+      </div>
+      <div class="galeria-item">
+        <video controls muted loop playsinline>
+          <source src="./imagenesweb/Espuma.mp4" type="video/mp4">
+        </video>
+        <div class="galeria-overlay">Espuma en Accion</div>
+      </div>
+      <div class="galeria-item">
+        <img src="./imagenesweb/pack-50.jpg" alt="Manijas de vidrio servidas">
+        <div class="galeria-overlay">Pack x50 en acción</div>
+      </div>
+      <div class="galeria-item">
+        <img src="./imagenesweb/completo.jpg" alt="Asado con chopp">
+        <div class="galeria-overlay">Servicio Completo</div>
+      </div>
+      <div class="galeria-item">
+        <video controls muted loop playsinline>
+          <source src="./imagenesweb/Chinchin.mp4" type="video/mp4">
+        </video>
+        <div class="galeria-overlay">Brindis con amigos</div>
+      </div>
+      <div class="galeria-item">
+        <img src="./imagenesweb/novio_manija.jpg" alt="Novio con manijas">
+        <div class="galeria-overlay">Novio con manija</div>
+      </div>
+      <div class="galeria-item">
+        <img src="./imagenesweb/barriles.jpg" alt="Barriles">
+        <div class="galeria-overlay">Barriles</div>
+      </div>
+      <div class="galeria-item">
+        <img src="./imagenesweb/ultra.jpg" alt="Ultra">
+        <div class="galeria-overlay">Ultra</div>
+      </div>
+      <div class="galeria-item">
+        <img src="./imagenesweb/Manija_tabla_800x600.jpg" alt="Manijas">
+        <div class="galeria-overlay">Manijas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <div class="testimonios-grid">
+      <div class="testimonio">
+        <p class="testimonio-texto">"Eramos 80 personas. Con las manijas extras todos tomaron en vidrio. La fiesta quedó épica y las fotos salieron increíbles."</p>
+        <p class="testimonio-autor">— Diego M.</p>
+      </div>
+      <div class="testimonio">
+        <p class="testimonio-texto">"Con el alquiler de chopp, te olvidás de ir a comprar las cervezas, buscar hielo, conservadoras y que tus bebidas estén frías para el evento."</p>
+        <p class="testimonio-autor">— Nelson P.</p>
+      </div>
+      <div class="testimonio">
+        <p class="testimonio-texto">"Con el barril extra, no me preocupé de que falte a la hora clave. Además, es a consignación, si no se consume me devuelven el importe al retirar el equipo."</p>
+        <p class="testimonio-autor">— Sergio A.</p>
+      </div>
+      <div class="testimonio">
+        <p class="testimonio-texto">"Excelente servicio...Clase A."</p>
+        <p class="testimonio-autor">— Ovidio Q.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <h2>Llevá manijas de vidrio a tu evento</h2>
+    <p>Que nadie tome en vaso de plástico. Cotizá ahora para tu próximo evento.</p>
+    <a href="https://wa.me/595973424269" class="btn btn-primary" style="display:inline-flex; width:auto;" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.8c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.156 8.156 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.48-.4-.41-.56-.42h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.71 4.29 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.11-.23-.18-.48-.3z"/></svg>
+      Cotizar por WhatsApp al 0973 424 269
+    </a>
+  </div>
+</section>
+
+<!-- BOTONES FLOTANTES: FACEBOOK, INSTAGRAM Y WHATSAPP -->
+<div class="flotantes-cont">
+  <a href="https://www.facebook.com/profile.php?id=61588991954080" class="fb-flotante" target="_blank" aria-label="Contacto por Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/gaudelbrewing/?hl=es" class="ig-flotante" target="_blank" aria-label="Contacto por Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a href="https://wa.me/595973424269" class="wa-flotante" target="_blank" aria-label="Contacto por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.8c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.156 8.156 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.188 8.188 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.48-.4-.41-.56-.42h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.71 4.29 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.11-.23-.18-.48-.3z"/></svg>
+  </a>
+</div>
+
+<footer>
+  <div class="container">
+    <p><strong>Gaudel Brewing Co.</strong> - Servicio de Chopp en Lambaré</p>
+    <p>WhatsApp: <a href="https://wa.me/595973424269">0973 424 269</a> | Email: <a href="mailto:gaudelbeer@gmail.com">gaudelbeer@gmail.com</a> | Facebook: <a href="https://www.facebook.com/profile.php?id=61588991954080" target="_blank">Gaudel Brewing Co.</a> | Instagram: <a href="https://www.instagram.com/gaudelbrewing/?hl=es" target="_blank">@gaudelbeer</a> | Delivery gratis en Lambaré</p>
+    <p style="margin-top:12px">*Rotura/pérdida: Gs. 15.000 c/u. | Pago al confirmar servicio</p>
+  </div>
+</footer>
+
+<script>
+  // Catálogo de precios base
+  const precios = {
+    original: {
+      "30": { nombre: "Barril Munich Original 30L", precio: 390000, recarga: 350000, litros: 30 },
+      "50": { nombre: "Barril Munich Original 50L", precio: 590000, recarga: 550000, litros: 50 }
+    },
+    ultra: {
+      "30": { nombre: "Barril Munich Ultra 30L", precio: 450000, recarga: 420000, litros: 30 }
+    },
+    manijas: {
+      0: 0,
+      20: 50000,
+      30: 75000,
+      50: 120000
+    }
+  };
+
+  let estado = {
+    estilo: 'original',
+    invitados: 30,
+    duracion: 4,
+    manijas: 0
+  };
+
+  function actualizarEstado() {
+    estado.estilo = document.getElementById('estilo').value;
+    estado.invitados = parseInt(document.getElementById('invitados').value);
+    estado.duracion = parseInt(document.getElementById('duracion').value);
+    estado.manijas = parseInt(document.getElementById('manijas').value);
+
+    document.getElementById('valInvitados').textContent = estado.invitados;
+    document.getElementById('valDuracion').textContent = estado.duracion + ' hs';
+
+    calcular();
+  }
+
+  function calcular() {
+    let catalogoActual = precios[estado.estilo] || precios.original;
+    let barriles = [];
+    let recargas = [];
+
+    // LÓGICA DE NEGOCIO: MUNICH ULTRA
+    if (estado.estilo === 'ultra') {
+      if (estado.invitados <= 49) {
+        barriles.push({ ...catalogoActual["30"], cantidad: 1 });
+
+        if (estado.duracion === 6) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 1 
+          });
+        } else if (estado.duracion === 8) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 2 
+          });
+        } else if (estado.duracion > 8) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 3 
+          });
+        }
+      } 
+      else if (estado.invitados >= 50 && estado.invitados <= 79) {
+        barriles.push({ ...catalogoActual["30"], cantidad: 1 });
+
+        if (estado.duracion < 6) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 1 
+          });
+        } else if (estado.duracion === 6) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 2 
+          });
+        } else if (estado.duracion >= 8) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 3 
+          });
+        }
+      } 
+      else if (estado.invitados >= 80 && estado.invitados <= 120) {
+        barriles.push({ ...catalogoActual["30"], cantidad: 2 });
+
+        if (estado.duracion < 6) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 2 
+          });
+        } else if (estado.duracion === 6) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 4 
+          });
+        } else if (estado.duracion >= 8) {
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: precios.original["50"].recarga, 
+            litros: 50, 
+            cantidad: 6 
+          });
+        }
+      } 
+      else if (estado.invitados >= 121 && estado.invitados <= 150) {
+        barriles.push({ ...catalogoActual["30"], cantidad: 3 });
+
+        if (estado.duracion <= 6) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 3 
+          });
+        } else if (estado.duracion === 8) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 6 
+          });
+        } else if (estado.duracion > 8) {
+          recargas.push({ 
+            nombre: "Recarga Munich Ultra 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 9 
+          });
+        }
+      } 
+      else {
+        barriles.push({ ...catalogoActual["30"], cantidad: 3 });
+        recargas.push({ 
+          nombre: "Recarga Munich Ultra 30L", 
+          precio: catalogoActual["30"].recarga, 
+          litros: 30, 
+          cantidad: 9 
+        });
+      }
+    } 
+    // LÓGICA DE NEGOCIO: MUNICH ORIGINAL
+    else {
+      if (estado.invitados <= 49) {
+        if (estado.duracion < 6) {
+          barriles.push({ ...catalogoActual["30"], cantidad: 1 });
+        } else if (estado.duracion === 6) {
+          barriles.push({ ...catalogoActual["30"], cantidad: 1 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 1 
+          });
+        } else if (estado.duracion === 8) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 1 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 1 
+          });
+        } else if (estado.duracion > 8) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 1 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 1 
+          });
+        }
+      } 
+      else if (estado.invitados >= 50 && estado.invitados <= 79) {
+        if (estado.duracion < 6) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 1 });
+        } else if (estado.duracion === 6) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 1 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 1 
+          });
+        } else if (estado.duracion >= 8) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 1 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 2 
+          });
+        }
+      } 
+      else if (estado.invitados >= 80 && estado.invitados <= 120) {
+        if (estado.duracion < 6) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 2 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 2 
+          });
+        } else if (estado.duracion === 6) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 2 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 2 
+          });
+        } else if (estado.duracion >= 8) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 2 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 4 
+          });
+        }
+      } 
+      else if (estado.invitados >= 121 && estado.invitados <= 150) {
+        if (estado.duracion <= 6) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 3 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 30L", 
+            precio: catalogoActual["30"].recarga, 
+            litros: 30, 
+            cantidad: 3 
+          });
+        } else if (estado.duracion === 8) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 3 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 3 
+          });
+        } else if (estado.duracion > 8) {
+          barriles.push({ ...catalogoActual["50"], cantidad: 3 });
+          recargas.push({ 
+            nombre: "Recarga Munich Original 50L", 
+            precio: catalogoActual["50"].recarga, 
+            litros: 50, 
+            cantidad: 6 
+          });
+        }
+      } 
+      else {
+        barriles.push({ ...catalogoActual["50"], cantidad: 3 });
+        recargas.push({ 
+          nombre: "Recarga Munich Original 50L", 
+          precio: catalogoActual["50"].recarga, 
+          litros: 50, 
+          cantidad: 6 
+        });
+      }
+    }
+
+    // CÁLCULO DE TOTALES
+    let precioBarriles = barriles.reduce((acc, b) => acc + (b.precio * b.cantidad), 0);
+    let litrosBarriles = barriles.reduce((acc, b) => acc + (b.litros * b.cantidad), 0);
+    let nombreBarriles = barriles.map(b => b.cantidad > 1 ? `${b.cantidad}x ${b.nombre}` : b.nombre).join(" + ");
+
+    let precioRecargas = recargas.reduce((acc, r) => acc + (r.precio * r.cantidad), 0);
+    let litrosRecargas = recargas.reduce((acc, r) => acc + (r.litros * r.cantidad), 0);
+    let nombreRecargas = recargas.map(r => r.cantidad > 1 ? `${r.cantidad}x ${r.nombre}` : r.nombre).join(" + ");
+
+    let precioManijas = precios.manijas[estado.manijas] || 0;
+    let totalManijas = 20 + estado.manijas;
+    let total = precioBarriles + precioRecargas + precioManijas;
+    let litrosTotales = litrosBarriles + litrosRecargas;
+
+    // ACTUALIZACIÓN DE INTERFAZ
+    document.getElementById('resultado').classList.add('activo');
+    document.getElementById('barrilNombre').textContent = nombreBarriles;
+    document.getElementById('barrilPrecio').textContent = 'Gs. ' + precioBarriles.toLocaleString('es-PY');
+
+    if (recargas.length > 0) {
+      document.getElementById('recargaRow').style.display = 'flex';
+      document.getElementById('recargaNombre').innerHTML = nombreRecargas + '<span class="badge-recarga">EVENTO LARGO</span>';
+      document.getElementById('recargaPrecio').textContent = 'Gs. ' + precioRecargas.toLocaleString('es-PY');
+    } else {
+      document.getElementById('recargaRow').style.display = 'none';
+    }
+
+    if (estado.manijas > 0) {
+      document.getElementById('manijasExtraRow').style.display = 'flex';
+      let textoManijas = `Pack x${estado.manijas} manijas`;
+      if (estado.manijas === 50) textoManijas += '<span class="badge-ahorro">MEJOR PRECIO</span>';
+      document.getElementById('manijasExtraTexto').innerHTML = textoManijas;
+      document.getElementById('manijasExtraPrecio').textContent = 'Gs. ' + precioManijas.toLocaleString('es-PY');
+    } else {
+      document.getElementById('manijasExtraRow').style.display = 'none';
+    }
+
+    document.getElementById('totalPrecio').textContent = 'Gs. ' + total.toLocaleString('es-PY');
+    let vasos = Math.round(litrosTotales / 0.5);
+    document.getElementById('equivalencia').textContent = `${litrosTotales}L = ~${vasos} vasos de 500ml | Total ${totalManijas} manijas de vidrio`;
+
+    // MENSAJE WHATSAPP
+    let mensaje = `Hola Gaudel! 🍺%0AUsé la calculadora para Lambaré:%0A%0ABarril: ${nombreBarriles} - Gs. ${precioBarriles.toLocaleString('es-PY')}`;
+    if (recargas.length > 0) {
+      mensaje += `%0A${nombreRecargas} - Gs. ${precioRecargas.toLocaleString('es-PY')}`;
+    }
+    mensaje += `%0AManijas: 20 incluidas`;
+    if (estado.manijas > 0) {
+      let detalleManijas = ` Pack x${estado.manijas}`;
+      mensaje += ` ${detalleManijas} - Gs. ${precioManijas.toLocaleString('es-PY')}`;
+    }
+    mensaje += `%0ATotal: Gs. ${total.toLocaleString('es-PY')}%0A%0APara ${estado.invitados} personas x ${estado.duracion}hs%0A¿Tienen disponible?`;
+    document.getElementById('btnWA').href = `https://wa.me/595973424269?text=${mensaje}`;
+  }
+
+  // Inicializar en primera carga
+  actualizarEstado();
+
+  // SCROLL SUAVE
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
